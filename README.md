@@ -49,7 +49,7 @@
 >* semVer(varchar 265)
 >* intitule(varchar 265)
 >* objectifPedagogique(time)
->* #id_competence(foreign_key)
+
 
 >Video
 >* id(primary_key, auto-incremente)
@@ -66,6 +66,7 @@
 >Competence
 >* id(primary_key, auto-incremente)
 >* type(varchar 265)
+>* #id_module(foreign_key)
 
 >Apprenant
 >* id(primary_key, auto-incremente)
