@@ -113,6 +113,52 @@
 
 
 #------------------------------------------------------------
+# Table: Module
+#------------------------------------------------------------
+
+CREATE TABLE Module(
+        id                  Int  Auto_increment  NOT NULL ,
+        semVer              Varchar (265) NOT NULL ,
+        intitule            Varchar (265) NOT NULL ,
+        objectifPedagogique Text NOT NULL ,
+        Duree               Time NOT NULL
+	,CONSTRAINT Module_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Video
+#------------------------------------------------------------
+
+CREATE TABLE Video(
+        id              Int  Auto_increment  NOT NULL ,
+        dateCreation    Date NOT NULL ,
+        cheminRessource Varchar (265) NOT NULL ,
+        id_Module       Int NOT NULL
+	,CONSTRAINT Video_PK PRIMARY KEY (id)
+
+	,CONSTRAINT Video_Module_FK FOREIGN KEY (id_Module) REFERENCES Module(id)
+	,CONSTRAINT Video_Module_AK UNIQUE (id_Module)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Image
+#------------------------------------------------------------
+
+CREATE TABLE Image(
+        id              Int  Auto_increment  NOT NULL ,
+        dateCreation    Varchar (265) NOT NULL ,
+        cheminressource Varchar (265) NOT NULL ,
+        id_Module       Int NOT NULL
+	,CONSTRAINT Image_PK PRIMARY KEY (id)
+
+	,CONSTRAINT Image_Module_FK FOREIGN KEY (id_Module) REFERENCES Module(id)
+	,CONSTRAINT Image_Module_AK UNIQUE (id_Module)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Formateur
 #------------------------------------------------------------
 
@@ -161,58 +207,12 @@ CREATE TABLE Appreunants(
 #------------------------------------------------------------
 
 CREATE TABLE Competences(
-        Id   Int  Auto_increment  NOT NULL ,
-        type Varchar (265) NOT NULL
+        Id        Int  Auto_increment  NOT NULL ,
+        type      Varchar (265) NOT NULL ,
+        id_Module Int
 	,CONSTRAINT Competences_PK PRIMARY KEY (Id)
-)ENGINE=InnoDB;
 
-
-#------------------------------------------------------------
-# Table: Module
-#------------------------------------------------------------
-
-CREATE TABLE Module(
-        id                  Int  Auto_increment  NOT NULL ,
-        semVer              Varchar (265) NOT NULL ,
-        intitule            Varchar (265) NOT NULL ,
-        objectifPedagogique Text NOT NULL ,
-        Duree               Time NOT NULL ,
-        Id_Competences      Int NOT NULL
-	,CONSTRAINT Module_PK PRIMARY KEY (id)
-
-	,CONSTRAINT Module_Competences_FK FOREIGN KEY (Id_Competences) REFERENCES Competences(Id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Video
-#------------------------------------------------------------
-
-CREATE TABLE Video(
-        id              Int  Auto_increment  NOT NULL ,
-        dateCreation    Date NOT NULL ,
-        cheminRessource Varchar (265) NOT NULL ,
-        id_Module       Int NOT NULL
-	,CONSTRAINT Video_PK PRIMARY KEY (id)
-
-	,CONSTRAINT Video_Module_FK FOREIGN KEY (id_Module) REFERENCES Module(id)
-	,CONSTRAINT Video_Module_AK UNIQUE (id_Module)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Image
-#------------------------------------------------------------
-
-CREATE TABLE Image(
-        id              Int  Auto_increment  NOT NULL ,
-        dateCreation    Varchar (265) NOT NULL ,
-        cheminressource Varchar (265) NOT NULL ,
-        id_Module       Int NOT NULL
-	,CONSTRAINT Image_PK PRIMARY KEY (id)
-
-	,CONSTRAINT Image_Module_FK FOREIGN KEY (id_Module) REFERENCES Module(id)
-	,CONSTRAINT Image_Module_AK UNIQUE (id_Module)
+	,CONSTRAINT Competences_Module_FK FOREIGN KEY (id_Module) REFERENCES Module(id)
 )ENGINE=InnoDB;
 
 
@@ -245,6 +245,7 @@ CREATE TABLE Constituer(
 	,CONSTRAINT Constituer_Module_FK FOREIGN KEY (id) REFERENCES Module(id)
 	,CONSTRAINT Constituer_Formation0_FK FOREIGN KEY (id_Formation) REFERENCES Formation(id)
 )ENGINE=InnoDB;
+
 
 
 ```
