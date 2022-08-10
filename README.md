@@ -46,35 +46,35 @@
 
 >Module 
 >* id(primary_key, auto-incremente)
->* semVer(varchar 265)
->* intitule(varchar 265)
+>* semVer(varchar 255)
+>* intitule(varchar 255)
 >* objectifPedagogique(time)
 
 
 >Video
 >* id(primary_key, auto-incremente)
 >* dateCreation(date)
->* cheminRessource(varchar 265)
+>* cheminRessource(varchar 255)
 >* #id_module(foreign_key)
 
 >Image
 >* id(primary_key, auto-incremente)
 >* dateCreation(date)
->* cheminRessource(varchar 265)
+>* cheminRessource(varchar 255)
 >* #id_module(foreign_key)
 
 >Competence
 >* id(primary_key, auto-incremente)
->* type(varchar 265)
+>* type(varchar 255)
 >* #id_module(foreign_key)
 
 >Apprenant
 >* id(primary_key, auto-incremente)
->* nom(varchar 265)
->* prenom(varchar 265)
->* email(varchar 265)
->* password(varchar 265)
->* numInscription(varchar 265)
+>* nom(varchar 255)
+>* prenom(varchar 255)
+>* email(varchar 255)
+>* password(varchar 255)
+>* numInscription(varchar 255)
 
 
 >Evaluation
@@ -86,15 +86,15 @@
 
 >Formateur
 >* id(primary_key, auto-incremente)
->* nom(varchar 265)
->* prenom(varchar 265)
->* email(varchar 265)
->* password(varchar 265)
->* code(varchar 265)
+>* nom(varchar 255)
+>* prenom(varchar 255)
+>* email(varchar 255)
+>* password(varchar 255)
+>* code(varchar 255)
 
 >Formation
 >* id(primary_key, auto-incremente)
->* nomFormation(varchar 265)
+>* nomFormation(varchar 255)
 >* #id_formateur(foreign_key)
 
 >Constituer
@@ -119,8 +119,8 @@
 
 CREATE TABLE Module(
         id                  Int  Auto_increment  NOT NULL ,
-        semVer              Varchar (265) NOT NULL ,
-        intitule            Varchar (265) NOT NULL ,
+        semVer              Varchar (255) NOT NULL ,
+        intitule            Varchar (255) NOT NULL ,
         objectifPedagogique Text NOT NULL ,
         Duree               Time NOT NULL
 	,CONSTRAINT Module_PK PRIMARY KEY (id)
@@ -134,7 +134,7 @@ CREATE TABLE Module(
 CREATE TABLE Video(
         id              Int  Auto_increment  NOT NULL ,
         dateCreation    Date NOT NULL ,
-        cheminRessource Varchar (265) NOT NULL ,
+        cheminRessource Varchar (255) NOT NULL ,
         id_Module       Int NOT NULL
 	,CONSTRAINT Video_PK PRIMARY KEY (id)
 
@@ -149,8 +149,8 @@ CREATE TABLE Video(
 
 CREATE TABLE Image(
         id              Int  Auto_increment  NOT NULL ,
-        dateCreation    Varchar (265) NOT NULL ,
-        cheminressource Varchar (265) NOT NULL ,
+        dateCreation    Varchar (255) NOT NULL ,
+        cheminressource Varchar (255) NOT NULL ,
         id_Module       Int NOT NULL
 	,CONSTRAINT Image_PK PRIMARY KEY (id)
 
@@ -165,11 +165,11 @@ CREATE TABLE Image(
 
 CREATE TABLE Formateur(
         id       Int  Auto_increment  NOT NULL ,
-        code     Varchar (265) NOT NULL ,
-        nom      Varchar (265) NOT NULL ,
-        prenom   Varchar (265) NOT NULL ,
-        email    Varchar (265) NOT NULL ,
-        password Varchar (265) NOT NULL
+        code     Varchar (255) NOT NULL ,
+        nom      Varchar (255) NOT NULL ,
+        prenom   Varchar (255) NOT NULL ,
+        email    Varchar (255) NOT NULL ,
+        password Varchar (255) NOT NULL
 	,CONSTRAINT Formateur_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -180,7 +180,7 @@ CREATE TABLE Formateur(
 
 CREATE TABLE Formation(
         id           Int  Auto_increment  NOT NULL ,
-        nomFormation Varchar (265) NOT NULL ,
+        nomFormation Varchar (255) NOT NULL ,
         id_Formateur Int NOT NULL
 	,CONSTRAINT Formation_PK PRIMARY KEY (id)
 
@@ -194,11 +194,11 @@ CREATE TABLE Formation(
 
 CREATE TABLE Appreunants(
         id             Int  Auto_increment  NOT NULL ,
-        nom            Varchar (265) NOT NULL ,
-        prenom         Varchar (265) NOT NULL ,
-        email          Varchar (265) NOT NULL ,
-        password       Varchar (265) NOT NULL ,
-        numInscription Varchar (265) NOT NULL
+        nom            Varchar (255) NOT NULL ,
+        prenom         Varchar (255) NOT NULL ,
+        email          Varchar (255) NOT NULL ,
+        password       Varchar (255) NOT NULL ,
+        numInscription Varchar (255) NOT NULL
 	,CONSTRAINT Appreunants_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -209,7 +209,7 @@ CREATE TABLE Appreunants(
 
 CREATE TABLE Competences(
         Id        Int  Auto_increment  NOT NULL ,
-        type      Varchar (265) NOT NULL ,
+        type      Varchar (255) NOT NULL ,
         id_Module Int
 	,CONSTRAINT Competences_PK PRIMARY KEY (Id)
 
